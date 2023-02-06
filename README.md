@@ -3,8 +3,15 @@
 make Simple  App 
 
 mkdir ecs
+
+git clone https://github.com/razibhasan1/ecs-deploy-with-terraform.git
+
+move all the file in ecs folder
+
 cd ecs
+
 npm init --y
+
 npm install express
 
 ##Run app ##
