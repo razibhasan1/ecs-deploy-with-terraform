@@ -22,6 +22,6 @@ terraform init
 
 terraform plan
 
-terraform apply -auto-approve
+terraform apply --auto-approve
 
 check the Load balancer dns in your browser.it will show "Simple APP with Terraform!"
