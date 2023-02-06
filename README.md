@@ -23,6 +23,8 @@ Now it is time we pushed our container to a container registry service.Now we ca
 
 once login successful then build & push image to repo.
 
+after done all the required part from Docker,ECR,Node Js file lets jump in to the terraform part.
+
 #Terraform#
 
 terraform init
