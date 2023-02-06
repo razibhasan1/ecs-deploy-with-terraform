@@ -1,6 +1,6 @@
 # ecs-deploy-with-terraform
 
-make Simple Node App 
+make Simple  App 
 
 mkdir ecs
 cd ecs
