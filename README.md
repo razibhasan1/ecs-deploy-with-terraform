@@ -12,7 +12,7 @@ npm install express
 node index.js
 
 
-Push the  App to AWS ECR please check ecr push command through your repository.before push please login to your ecr in your instance.
+Push the  image to AWS ECR please check ecr push command through your repository.before push please login to your ecr in your instance.
 
 once login successful then build & push image to repo.
 
