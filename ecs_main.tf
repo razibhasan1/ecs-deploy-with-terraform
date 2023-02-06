@@ -4,12 +4,12 @@ provider "aws" {
 }
 
 resource "aws_ecr_repository" "my_first_ecr_repo" {
-  name = "my-first-ecr-repo" # Naming my repository
+  name = "my-first-ecr-repo" 
 }
 
 
 resource "aws_ecs_cluster" "my_cluster" {
-  name = "my-cluster" # Naming the cluster
+  name = "my-cluster" 
 }
 
 
@@ -32,10 +32,10 @@ resource "aws_ecs_task_definition" "my_first_task" {
     }
   ]
   DEFINITION
-  requires_compatibilities = ["FARGATE"] # Stating that we are using ECS Fargate
-  network_mode             = "awsvpc"    # Using awsvpc as our network mode as this is required for Fargate
-  memory                   = 512         # Specifying the memory our container requires
-  cpu                      = 256         # Specifying the CPU our container requires
+  requires_compatibilities = ["FARGATE"] 
+  network_mode             = "awsvpc"    
+  memory                   = 512         
+  cpu                      = 256         
   execution_role_arn       = "${aws_iam_role.ecsTaskExecutionRole.arn}"
 }
 
@@ -114,7 +114,7 @@ resource "aws_lb_target_group" "target_group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = "${aws_default_vpc.default_vpc.id}" # Referencing the default VPC
+  vpc_id      = "${aws_default_vpc.default_vpc.id}" 
   health_check {
     matcher = "200,301,302"
     path = "/"
@@ -122,25 +122,25 @@ resource "aws_lb_target_group" "target_group" {
 }
 
 resource "aws_lb_listener" "listener" {
-  load_balancer_arn = "${aws_alb.application_load_balancer.arn}" # Referencing our load balancer
+  load_balancer_arn = "${aws_alb.application_load_balancer.arn}" 
   port              = "80"
   protocol          = "HTTP"
   default_action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.target_group.arn}" # Referencing our tagrte group
+    target_group_arn = "${aws_lb_target_group.target_group.arn}"
   }
 }
 
 
 resource "aws_ecs_service" "my_first_service" {
-  name            = "my-first-service"                             # Naming our first service
-  cluster         = "${aws_ecs_cluster.my_cluster.id}"             # Referencing our created Cluster
-  task_definition = "${aws_ecs_task_definition.my_first_task.arn}" # Referencing the task our service will spin up
+  name            = "my-first-service"                             
+  cluster         = "${aws_ecs_cluster.my_cluster.id}"             
+  task_definition = "${aws_ecs_task_definition.my_first_task.arn}" 
   launch_type     = "FARGATE"
   desired_count   = 3 # Setting the number of containers to 3
 
   load_balancer {
-    target_group_arn = "${aws_lb_target_group.target_group.arn}" # Referencing our target group
+    target_group_arn = "${aws_lb_target_group.target_group.arn}" 
     container_name   = "${aws_ecs_task_definition.my_first_task.family}"
     container_port   = 3000 # Specifying the container port
   }
