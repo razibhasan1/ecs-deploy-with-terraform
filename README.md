@@ -12,7 +12,7 @@ npm install express
 node index.js
 
 
-Push the  image to AWS ECR please check ecr push command through your repository.before push please login to your ecr in your instance.
+Now it is time we pushed our container to a container registry service.Now we can push our Node application image up to this repository. Click on the repository and click View push commands. A modal will appear with four commands you need to run locally in order to have your image pushed up to your repository.Once you have run these commands, you should see your pushed image in your repository.
 
 once login successful then build & push image to repo.
 
